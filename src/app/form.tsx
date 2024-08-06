@@ -17,6 +17,10 @@ export default function Form(props: FormI) {
       jobDescription: { value: string },
       profileSummary: { value: string },
     }
+    const values = [formElements.company.value, formElements.designation.value, formElements.jobDescription.value, formElements.profileSummary.value]
+    const isBelowThreshold = (currentValue: string) => currentValue;
+    const isAllFilled = values.every(isBelowThreshold);
+    if (!isAllFilled) return;
     props.onSubmit({
       company: formElements.company.value,
       designation: formElements.designation.value,
